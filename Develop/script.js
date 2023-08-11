@@ -18,7 +18,17 @@ function generatePassword() {
   requiredCriteria.upper = document.getElementById("upperCase").checked;
   requiredCriteria.special = document.getElementById("special").checked;
   requiredCriteria.number = document.getElementById("number").checked;
-  requiredCriteria.passwordLength = (document.getElementById("passLength").value);
+  var passLengthElement = document.getElementById("passLength");
+  var tempPasswordLength = passLengthElement.value;
+  //force the number to be between 8 and 128
+  requiredCriteria.passwordLength = Math.min(128, Math.max(8, tempPasswordLength));
+  if ((tempPasswordLength < 8) || (tempPasswordLength > 128)) {
+    window.alert("Length out of range, generating length: " + requiredCriteria.passwordLength);
+  }
+  
+  //updating the UI if the user typed something outside of those values
+  passLengthElement.value = requiredCriteria.passwordLength
+  
   console.log(`length is ${requiredCriteria.passwordLength}`);
   return generatePasswordWithTypes(requiredCriteria);
 }
