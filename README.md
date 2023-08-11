@@ -8,7 +8,7 @@ Password generator takes input from checkbox and number input to determine what 
 
 The GitHub Pages link.
 
-
+https://jd2929.github.io/PasswordGenerator/
 
 The screenshot of the deployed password generator.
 
