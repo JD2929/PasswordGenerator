@@ -6,6 +6,10 @@ Password generator takes input from checkbox and number input to determine what 
 
 ## Deployed at GitHub Pages
 
+The GitHub Pages link.
 
+
+
+The screenshot of the deployed password generator.
 
 
