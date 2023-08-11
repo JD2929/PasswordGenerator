@@ -16,9 +16,9 @@ function writePassword() {
 
 // generate password function
 function generatePassword() {
-  var requiredCriteria = { lower: true, upper: false, special: false, number: false };
+  var requiredCriteria = { lower: true, upper: true, special: true, number: true, passwordLength: 10};
 
-return  generatePasswordWithTypes(requiredCriteria)
+  return generatePasswordWithTypes(requiredCriteria)
 
 }
 
@@ -33,18 +33,28 @@ function generatePasswordWithTypes(requiredCriteria) {
   var totalPossible = "";
 
   if (requiredCriteria.lower) {
-    totalPossible = totalPossible.concat(lowerPossible)
+    totalPossible = totalPossible.concat(lowerPossible);
+    var characterToAdd = lowerPossible.charAt(Math.floor(Math.random() * lowerPossible.length));
+    accumulatedPassword = accumulatedPassword.concat(characterToAdd);
+
   }
   if (requiredCriteria.upper) {
-    totalPossible = totalPossible.concat(upperPossible)
+    totalPossible = totalPossible.concat(upperPossible);
+    var characterToAdd = upperPossible.charAt(Math.floor(Math.random() * upperPossible.length));
+    accumulatedPassword = accumulatedPassword.concat(characterToAdd);
   }
   if (requiredCriteria.special) {
     totalPossible = totalPossible.concat(specialPossible);
+    var characterToAdd = specialPossible.charAt(Math.floor(Math.random() * specialPossible.length));
+    accumulatedPassword = accumulatedPassword.concat(characterToAdd);
   }
   if (requiredCriteria.number) {
     totalPossible = totalPossible.concat(numberPossible);
+    var characterToAdd = numberPossible.charAt(Math.floor(Math.random() * numberPossible.length));
+    accumulatedPassword = accumulatedPassword.concat(characterToAdd);
   }
-  for (var i = 0; i < 8; i++) {
+var startingLength = accumulatedPassword.length;
+  for (var i = startingLength; i < requiredCriteria.passwordLength; i++) {
 
     var characterToAdd = totalPossible.charAt(Math.floor(Math.random() * totalPossible.length));
     console.log(`Picked character ${characterToAdd}`);
